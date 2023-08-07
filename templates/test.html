@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    ROOM ID:<span id="room_id">{{room_id|upper}}</span> <br>
+
+    <input type="text" id="message" name="message" autocomplete="off"/>
+    <button type="button" onclick="sendMessage()">Send</button> <br>
+    MESSAGES HERE:<br>
+    <div id="messages">
+
+    </div>
+
+    <script>    
+        console.log("entered room: {{room_id}}") // room_id
+        const client_id = 99;
+        var ws = new WebSocket(`ws://localhost:8000/ws/{{room_id}}/${client_id}`);
+        console.log(ws)
+        ws.onmessage = function(event) {
+            var messages = document.getElementById('messages')
+            var message = document.createElement('li')
+            var content = document.createTextNode(event.data)
+            console.log(content)
+            message.appendChild(content)
+            messages.appendChild(message)
+        };
+        function sendMessage(event) {
+            // event.preventDefault()
+            var input = document.getElementById("message");
+            ws.send(JSON.stringify({'message':input.value}))
+            input.value = '';           
+        }
+    </script>
+</body>
+</html>
