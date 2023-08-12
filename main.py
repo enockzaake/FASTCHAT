@@ -104,12 +104,12 @@ manager = ConnectionManager()
 
 templates = Jinja2Templates(directory='templates')
 
-@app.get("/")
-async def index(request:Request):
-    # print("PARAMS:",request.path_params)
-    return templates.TemplateResponse('index.html',{'request':request})
+# @app.get("/")
+# async def index(request:Request):
+#     # print("PARAMS:",request.path_params)
+#     return templates.TemplateResponse('index.html',{'request':request})
  
-@app.get("/room")
+@app.get("/")
 async def room(request:Request):
     return templates.TemplateResponse("room.html",{"request": request})
 
