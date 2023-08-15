@@ -110,11 +110,11 @@ templates = Jinja2Templates(directory='templates')
 #     # print("PARAMS:",request.path_params)
 #     return templates.TemplateResponse('index.html',{'request':request})
  
-@app.get("/home")
+@app.get("/")
 async def room(request:Request):
     return templates.TemplateResponse("room.html",{"request": request})
 
-@app.post("/")
+@app.post("/messages")
 async def messages(request:Request):
     form_data = await request.form()
     # print("FORM DATA:",form_data)
