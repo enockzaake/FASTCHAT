@@ -127,6 +127,7 @@ async def websocket_endpoint(websocket: WebSocket,room_id:str, client_id: int):
         while True:
             data = await websocket.receive_text()
             data = json.loads(data)
+            print("DATA",data)
             await manager.send_group_message(websocket,room_id,data['message'])
             # await manager.send_personal_message(f"You wrote: {json.dumps(data)}", websocket)
             # await manager.broadcast(f"Client #{client_id} says: {json.dumps(data)}",websocket)

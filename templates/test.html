@@ -18,7 +18,7 @@
     <script>    
         console.log("entered room: {{room_id}}") // room_id
         const client_id = 99;
-        var ws = new WebSocket(`ws://localhost:8000/ws/{{room_id}}/${client_id}`);
+        var ws = new WebSocket(`ws://127.0.0.1:8000/ws/{{room_id}}/${client_id}`);
         console.log(ws)
         ws.onmessage = function(event) {
             var messages = document.getElementById('messages')
