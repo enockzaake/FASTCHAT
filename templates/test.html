@@ -18,8 +18,7 @@
     <script>    
         console.log("entered room: {{room_id}}") // room_id
         const client_id = 99;
-        var ws = new WebSocket(`wss://fastchat-x41u.onrender.com:8000/ws/{{room_id}}/${client_id}`);
-        console.log(ws)
+        var ws = new WebSocket(`wss://${window.location.host}/ws/{{room_id}}/${client_id}`);
         ws.onmessage = function(event) {
             var messages = document.getElementById('messages')
             var message = document.createElement('li')
